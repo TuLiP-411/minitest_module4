@@ -72,7 +72,7 @@ public class ExpenseController {
         }
     }
 
-    @PostMapping("/edit-Expense")
+    @PostMapping("/edit-expense")
     public ModelAndView updateExpense(@ModelAttribute("Expense") Expense expense) {
         ExpenseService.save(expense);
         ModelAndView modelAndView = new ModelAndView("/expense/edit");
@@ -81,7 +81,7 @@ public class ExpenseController {
         return modelAndView;
     }
 
-    @GetMapping("/delete-Expense/{id}")
+    @GetMapping("/delete-expense/{id}")
     public ModelAndView showDeleteForm(@PathVariable Long id) {
         Expense expense = ExpenseService.findById(id);
         if (expense != null) {
@@ -94,7 +94,7 @@ public class ExpenseController {
         }
     }
 
-    @PostMapping("/delete-Expense")
+    @PostMapping("/delete-expense")
     public String deleteExpense(@ModelAttribute("Expense") Expense expense) {
         expenseService.remove(expense.getId());
         return "redirect:Expenses";

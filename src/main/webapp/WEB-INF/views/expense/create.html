@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Expense</title>
+</head>
+<body>
+
+<h1>Upload Expense</h1>
+<p>
+  <a href="/payments">Expense List</a>
+</p>
+
+<th:block th:if="${message}">
+  <p th:text="${message}"></p>
+</th:block>
+
+<form th:action="@{/create-expense}" th:object="${expenseForm}" method="post"
+      novalidate="novalidate" enctype="multipart/form-data">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" th:field="*{name}"></td>
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td><input type="text" th:field="*{price}"></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><input type="text" th:field="*{description}"></td>
+    </tr>
+    <tr>
+      <td>Image:</td>
+      <td><input type="file" th:field="*{image}"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Create Expense"></td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>
